@@ -3,9 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🔮 THAUMATRIX — Резонансный эзотерический движок</title>
-  <link rel="preconnect" href="https://googleapis.com">
-  <link href="https://googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>🔮 THAUMATRIX — Универсальный эзотерический калькулятор</title>
+  
+  <!-- 🔮 ШАГ 1: Базовые SEO-теги -->
+  <meta name="description" content="THAUMATRIX — универсальный эзотерический калькулятор. Рассчитайте ваш код в нумерологии, астрологии, Матрице Судьбы, китайском гороскопе по дате, времени и месту рождения.">
+  <meta name="keywords" content="нумерология, астрология, матрица судьбы, китайский гороскоп, арканы, эзотерика, калькулятор судьбы, дата рождения, предназначение">
+  <meta name="robots" content="index, follow">
+  
+  <!-- 🔮 ШАГ 2: Open Graph для соцсетей (Телеграм, ВК) -->
+  <meta property="og:title" content="🔮 THAUMATRIX — Ваш эзотерический код">
+  <meta property="og:description" content="Рассчитайте персональный код в 5+ эзотерических системах: нумерология, астрология, Матрица Судьбы и другие.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thaumatrix.com/">
+  <meta property="og:image" content="https://thaumatrix.com/og-image.jpg">
+  <meta property="og:site_name" content="THAUMATRIX">
+  
+  <!-- 🔮 ШАГ 3: Фавикон (иконка вкладки браузера) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>">
+  
+  <!-- 🔮 ШАГ 10: JSON-LD микроразметка для поисковиков -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "THAUMATRIX",
+    "description": "Универсальный эзотерический калькулятор для расчёта персонального кода по дате рождения",
+    "applicationCategory": "LifestyleApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    },
+    "featureList": "Нумерология, Астрология, Матрица Судьбы, Китайский гороскоп, Таро-арканы"
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -24,49 +59,63 @@
       min-height: 100vh; overflow-x: hidden; line-height: 1.6; position: relative;
     }
 
-    /* === ТВОЙ ОРИГИНАЛЬНЫЙ КОСМИЧЕСКИЙ ФОН === */
+    /* === Космический фон === */
     #cosmicBg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
     .star { position: absolute; width: 2px; height: 2px; background: white; border-radius: 50%; opacity: 0; animation: fall linear infinite; }
     .meteor { position: absolute; width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 0 0 0 8px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,1); animation: meteor 5s linear infinite; opacity: 0; }
     .meteor::before { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 300px; height: 1px; background: linear-gradient(90deg, #fff, transparent); right: 1px; }
-    
     .planet { position: absolute; border-radius: 50%; opacity: 0.6; animation: float 20s ease-in-out infinite; }
     .planet-1 { width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, var(--gold), var(--gold-glow)); top: 10%; left: 10%; box-shadow: 0 0 30px rgba(255, 209, 102, 0.4); }
     .planet-2 { width: 40px; height: 40px; background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-glow)); top: 60%; left: 85%; box-shadow: 0 0 25px rgba(197, 160, 255, 0.4); animation-delay: -5s; }
     .planet-3 { width: 80px; height: 80px; background: radial-gradient(circle at 30% 30%, var(--success), #04a87d); top: 70%; left: 5%; box-shadow: 0 0 35px rgba(6, 214, 160, 0.3); animation-delay: -10s; }
     .planet-4 { width: 50px; height: 50px; background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5a5a); top: 20%; left: 80%; box-shadow: 0 0 28px rgba(255, 107, 107, 0.4); animation-delay: -15s; }
-
     @keyframes fall { 0% { transform: translateY(-100vh) scale(0.5); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(100vh) scale(1); opacity: 0; } }
     @keyframes meteor { 0% { transform: rotate(215deg) translateX(0); opacity: 0; } 10% { opacity: 1; } 70% { opacity: 1; } 100% { transform: rotate(215deg) translateX(-1000px); opacity: 0; } }
     @keyframes float { 0%, 100% { transform: translateY(0) translateX(0); } 33% { transform: translateY(-20px) translateX(10px); } 66% { transform: translateY(10px) translateX(-10px); } }
     
-    /* === ИНТЕРФЕЙС === */
+    /* === Интерфейс === */
     header { position: relative; z-index: 10; text-align: center; padding: 3rem 1rem 1rem; }
     .logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; background: linear-gradient(135deg, var(--gold), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(157, 78, 221, 0.3); margin-bottom: 0.5rem; }
     .tagline { color: var(--text-muted); font-size: 1rem; font-style: italic; letter-spacing: 1px; }
     
-    .container { max-width: 1000px; margin: 0 auto; padding: 2rem; position: relative; z-index: 10; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 2rem; position: relative; z-index: 10; }
     .input-section { background: rgba(15, 15, 20, 0.6); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 2.5rem; backdrop-filter: blur(15px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); margin-bottom: 3rem; border-top: 1px solid rgba(255,255,255,0.2); }
     
     .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
     .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
     label { font-size: 0.9rem; color: var(--gold); font-weight: 500; letter-spacing: 0.5px; }
     
-    input { padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; color: #fff; font-size: 1rem; transition: all 0.3s; width: 100%; }
-    input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(157, 78, 221, 0.3); }
+    input, select { 
+      padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); 
+      border-radius: 12px; color: #fff; font-size: 1rem; transition: all 0.3s; width: 100%; 
+    }
+    input:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px rgba(157, 78, 221, 0.3); }
+    input::placeholder { color: var(--text-muted); }
 
     .geo-wrapper { position: relative; }
     .geo-btn { position: absolute; right: 8px; top: 32px; background: var(--gold); border: none; border-radius: 8px; padding: 0.5rem 1rem; cursor: pointer; color: #000; font-weight: 700; font-size: 0.85rem; transition: transform 0.2s; z-index: 5; }
     .geo-btn:hover { transform: scale(1.05); }
     .geo-status { font-size: 0.8rem; margin-top: 5px; min-height: 25px; color: var(--text-muted); }
 
-    .calculate-btn { width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: #fff; font-weight: 700; font-size: 1.1rem; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 2px; }
-    .calculate-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5); }
+    .calculate-btn { 
+      width: 100%; padding: 1.2rem; background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); 
+      color: #fff; font-weight: 700; font-size: 1.1rem; border: none; border-radius: 12px; 
+      cursor: pointer; transition: all 0.3s; text-transform: uppercase; letter-spacing: 2px; 
+    }
+    .calculate-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(106, 17, 203, 0.5); }
+    .calculate-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
-    /* === БЛОК РЕЗУЛЬТАТОВ === */
+    /* === Блок результатов === */
     .results-section { display: none; animation: fadeIn 0.8s ease-out; }
     .results-section.show { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    .system-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab-btn { 
+      padding: 0.6rem 1.2rem; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); 
+      border-radius: 8px; color: var(--text-muted); cursor: pointer; transition: all 0.3s; font-size: 0.9rem;
+    }
+    .tab-btn:hover, .tab-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
 
     .module-card { background: rgba(20, 20, 25, 0.7); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; backdrop-filter: blur(10px); }
     .module-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
@@ -77,13 +126,37 @@
       text-align: center; border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: all 0.3s;
     }
     .result-item:hover { transform: translateY(-3px); background: rgba(255,255,255,0.08); border-color: var(--accent); }
-    
     .result-value { font-size: 1.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.3rem; }
     .result-label { font-size: 0.85rem; color: var(--text-muted); }
+    .result-desc { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic; }
     
     .resonance-box { background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(255, 209, 102, 0.1)); border: 2px solid var(--accent); border-radius: var(--radius); padding: 2.5rem; margin-top: 2rem; text-align: center; animation: pulse 3s ease-in-out infinite; }
     @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(157, 78, 221, 0.3); } 50% { box-shadow: 0 0 40px rgba(157, 78, 221, 0.6); } }
     .resonance-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold); margin-bottom: 0.5rem; }
+    
+    /* === Кнопка сброса (ШАГ 5) === */
+    .reset-section { text-align: center; margin-top: 2rem; }
+    .reset-btn { 
+      padding: 1rem 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+      color: #fff; font-weight: 600; border: none; border-radius: 12px; cursor: pointer; 
+      transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .reset-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4); }
+    
+    /* === Состояние загрузки (ШАГ 4) === */
+    .loading-spinner { 
+      display: none; width: 24px; height: 24px; border: 3px solid rgba(255,255,255,0.3); 
+      border-radius: 50%; border-top-color: #fff; animation: spin 1s linear infinite; margin: 0 auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    /* === Адаптив === */
+    @media (max-width: 768px) {
+      .logo { font-size: 2rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: repeat(2, 1fr); }
+      .system-tabs { justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -96,66 +169,183 @@
 
 <header>
   <div class="logo">THAUMATRIX</div>
-  <div class="tagline">Резонансный эзотерический движок</div>
+  <div class="tagline">Универсальный эзотерический калькулятор</div>
 </header>
 
 <div class="container">
   <div class="input-section">
     <div class="form-grid">
       <div class="input-group">
-        <label>Дата рождения</label>
-        <input type="date" id="birthDate">
+        <label for="birthDate">📅 Дата рождения *</label>
+        <input type="date" id="birthDate" name="birthDate" required aria-label="Дата рождения">
       </div>
       <div class="input-group">
-        <label>Время рождения</label>
-        <input type="time" id="birthTime">
+        <label for="birthTime">🕐 Время рождения</label>
+        <input type="time" id="birthTime" name="birthTime" aria-label="Время рождения">
       </div>
       <div class="input-group geo-wrapper">
-        <label>Место резонанса</label>
-        <input type="text" id="location" placeholder="Город или координаты">
-        <button class="geo-btn" onclick="getLocation()">ГЕО</button>
-        <div id="geoStatus" class="geo-status"></div>
+        <label for="location">📍 Место рождения</label>
+        <input type="text" id="location" name="location" placeholder="Город или координаты" aria-label="Место рождения">
+        <button type="button" class="geo-btn" onclick="getLocation()">🛰 ГЕО</button>
+        <div id="geoStatus" class="geo-status" aria-live="polite"></div>
       </div>
     </div>
-    <button class="calculate-btn" onclick="initResonance()">Активировать расчет</button>
+    
+    <!-- ШАГ 4: Состояние загрузки в кнопке -->
+    <button class="calculate-btn" id="calcBtn" onclick="initResonance()">
+      <span id="btnText">✨ Активировать расчёт</span>
+      <span class="loading-spinner" id="btnSpinner"></span>
+    </button>
+    
+    <!-- Подсказка для ШАГ 9: поддержка Enter -->
+    <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+      💡 Нажмите Enter для быстрого расчёта
+    </p>
   </div>
 
-  <div class="results-section" id="results">
-    <div class="module-card">
-      <div class="module-title">🔮 Матрица Судьбы</div>
+  <!-- Результаты -->
+  <div class="results-section" id="results" role="region" aria-label="Результаты расчёта">
+    
+    <!-- Вкладки систем (новая функциональность) -->
+    <div class="system-tabs">
+      <button class="tab-btn active" data-system="all">🔮 Все системы</button>
+      <button class="tab-btn" data-system="numerology">🔢 Нумерология</button>
+      <button class="tab-btn" data-system="astrology">⭐ Астрология</button>
+      <button class="tab-btn" data-system="matrix">🌀 Матрица Судьбы</button>
+      <button class="tab-btn" data-system="chinese">🐉 Китайский гороскоп</button>
+    </div>
+
+    <!-- Нумерология -->
+    <div class="module-card" data-system="numerology">
+      <div class="module-title">🔢 Число Жизненного Пути (Нумерология)</div>
       <div class="result-grid">
         <div class="result-item">
-          <div class="result-value" id="res-day">--</div>
-          <div class="result-label">Энергия личности</div>
+          <div class="result-value" id="num-lifePath">--</div>
+          <div class="result-label">Жизненный путь</div>
+          <div class="result-desc" id="num-lifePath-desc"></div>
         </div>
         <div class="result-item">
-          <div class="result-value" id="res-month">--</div>
-          <div class="result-label">Духовный канал</div>
+          <div class="result-value" id="num-destiny">--</div>
+          <div class="result-label">Число судьбы</div>
+          <div class="result-desc" id="num-destiny-desc"></div>
         </div>
         <div class="result-item">
-          <div class="result-value" id="res-year">--</div>
-          <div class="result-label">Кармический узел</div>
+          <div class="result-value" id="num-soul">--</div>
+          <div class="result-label">Число души</div>
+          <div class="result-desc" id="num-soul-desc"></div>
         </div>
         <div class="result-item">
-          <div class="result-value" id="res-destiny">--</div>
-          <div class="result-label">Предназначение</div>
+          <div class="result-value" id="num-personality">--</div>
+          <div class="result-label">Число личности</div>
+          <div class="result-desc" id="num-personality-desc"></div>
         </div>
       </div>
     </div>
 
+    <!-- Астрология -->
+    <div class="module-card" data-system="astrology">
+      <div class="module-title">⭐ Астрологический профиль</div>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="astro-sun">--</div>
+          <div class="result-label">☀️ Солнечный знак</div>
+          <div class="result-desc">Ваша основная энергия</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="astro-moon">--</div>
+          <div class="result-label">🌙 Лунный знак</div>
+          <div class="result-desc">Эмоции и подсознание</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="astro-element">--</div>
+          <div class="result-label">🔥 Стихия</div>
+          <div class="result-desc">Огонь, Земля, Воздух, Вода</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="astro-quality">--</div>
+          <div class="result-label">⚡ Качество</div>
+          <div class="result-desc">Кардинальный, Фиксированный, Мутабельный</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Матрица Судьбы -->
+    <div class="module-card" data-system="matrix">
+      <div class="module-title">🌀 Матрица Судьбы (22 Аркана)</div>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="matrix-day">--</div>
+          <div class="result-label">Личность</div>
+          <div class="result-desc">Как вас видят другие</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="matrix-month">--</div>
+          <div class="result-label">Талант</div>
+          <div class="result-desc">Ваш духовный канал</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="matrix-year">--</div>
+          <div class="result-label">Карма</div>
+          <div class="result-desc">Задача этого воплощения</div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="matrix-destiny">--</div>
+          <div class="result-label">Предназначение</div>
+          <div class="result-desc">Ваша высшая цель</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Китайский гороскоп -->
+    <div class="module-card" data-system="chinese">
+      <div class="module-title">🐉 Китайский гороскоп</div>
+      <div class="result-grid">
+        <div class="result-item">
+          <div class="result-value" id="chinese-animal">--</div>
+          <div class="result-label">Животное года</div>
+          <div class="result-desc" id="chinese-animal-desc"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="chinese-element">--</div>
+          <div class="result-label">Стихия года</div>
+          <div class="result-desc" id="chinese-element-desc"></div>
+        </div>
+        <div class="result-item">
+          <div class="result-value" id="chinese-trine">--</div>
+          <div class="result-label">Тригон</div>
+          <div class="result-desc">Группа совместимости</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Общий индекс резонанса -->
     <div class="resonance-box">
       <div class="resonance-title" id="totalResonance">0%</div>
-      <p style="color: var(--accent); font-weight: 600;">ИНДЕКС РЕЗОНАНСА</p>
+      <p style="color: var(--accent); font-weight: 600;">ИНДЕКС ЭНЕРГЕТИЧЕСКОГО РЕЗОНАНСА</p>
       <p id="resonanceDesc" style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;"></p>
+    </div>
+
+    <!-- ШАГ 5: Кнопка сброса -->
+    <div class="reset-section">
+      <button class="reset-btn" onclick="resetCalculation()">🔄 Новый расчёт</button>
     </div>
   </div>
 </div>
 
 <script>
-  // === 1. ТВОИ ОРИГИНАЛЬНЫЕ АНИМАЦИИ (ЗВЕЗДЫ И МЕТЕОРЫ) ===
-  const bg = document.getElementById('cosmicBg');
-  
-  function createStars() {
+  // === ИНИЦИАЛИЗАЦИЯ ===
+  document.addEventListener('DOMContentLoaded', () => {
+    createCosmicBackground();
+    setupEnterKeySupport(); // ШАГ 9
+    loadSavedResult(); // ШАГ 8
+    setupTabs();
+    animateButtonEntrance();
+  });
+
+  // === КОСМИЧЕСКИЙ ФОН ===
+  function createCosmicBackground() {
+    const bg = document.getElementById('cosmicBg');
+    // Звёзды
     for (let i = 0; i < 80; i++) {
       const star = document.createElement('div');
       star.className = 'star';
@@ -164,9 +354,7 @@
       star.style.animationDelay = Math.random() * 5 + 's';
       bg.appendChild(star);
     }
-  }
-
-  function createMeteors() {
+    // Метеоры
     setInterval(() => {
       const meteor = document.createElement('div');
       meteor.className = 'meteor';
@@ -177,76 +365,412 @@
     }, 3000);
   }
 
-  createStars();
-  createMeteors();
+  // === ШАГ 9: Поддержка клавиши Enter ===
+  function setupEnterKeySupport() {
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          initResonance();
+        }
+      });
+    });
+  }
 
-  // === 2. ЛОГИКА ГЕОЛОКАЦИИ ===
-  function getLocation() {
+  // === ШАГ 8: Сохранение в localStorage ===
+  function saveResult(data) {
+    try {
+      localStorage.setItem('thaumatrix_last_result', JSON.stringify({
+        data,
+        timestamp: new Date().toISOString()
+      }));
+    } catch (e) { console.warn('Не удалось сохранить результат:', e); }
+  }
+  
+  function loadSavedResult() {
+    try {
+      const saved = localStorage.getItem('thaumatrix_last_result');
+      if (saved) {
+        const { data, timestamp } = JSON.parse(saved);
+        // Можно показать уведомление "Результат восстановлен"
+        console.log('Загружен результат от', timestamp);
+      }
+    } catch (e) { console.warn('Не удалось загрузить результат:', e); }
+  }
+
+  // === Вкладки систем ===
+  function setupTabs() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const cards = document.querySelectorAll('.module-card');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Активная вкладка
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const system = tab.dataset.system;
+        
+        // Показать/скрыть карточки
+        cards.forEach(card => {
+          if (system === 'all' || card.dataset.system === system) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  // === Анимация появления кнопки ===
+  function animateButtonEntrance() {
+    const btn = document.getElementById('calcBtn');
+    btn.style.opacity = '0';
+    btn.style.transform = 'translateY(10px)';
+    btn.style.transition = 'opacity 0.4s, transform 0.4s';
+    setTimeout(() => {
+      btn.style.opacity = '1';
+      btn.style.transform = 'translateY(0)';
+    }, 300);
+  }
+
+  // === ГЕОЛОКАЦИЯ + ШАГ 7: Обратная геокодировка ===
+  async function getLocation() {
     const status = document.getElementById('geoStatus');
-    if (navigator.geolocation) {
-      status.innerText = "Считывание координат...";
-      navigator.geolocation.getCurrentPosition(
-        (p) => {
-          status.innerText = `✅ Точка: ${p.coords.latitude.toFixed(2)}, ${p.coords.longitude.toFixed(2)}`;
-          document.getElementById('location').value = `${p.coords.latitude.toFixed(2)}, ${p.coords.longitude.toFixed(2)}`;
-        },
-        () => { status.innerText = "❌ Ошибка доступа к ГЕО"; }
-      );
+    if (!navigator.geolocation) {
+      status.innerText = "❌ Геолокация не поддерживается";
+      return;
+    }
+    
+    status.innerText = "🛰 Определение координат...";
+    
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, { enableHighAccuracy: true, timeout: 10000 });
+      });
+      
+      const { latitude, longitude } = position.coords;
+      const coords = `${latitude.toFixed(4)}, ${longitude.toFixed(4)}`;
+      
+      // ШАГ 7: Обратная геокодировка (координаты → город)
+      status.innerText = "🏙 Поиск названия места...";
+      try {
+        const response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=ru`);
+        const data = await response.json();
+        const placeName = data.address?.city || data.address?.town || data.address?.village || data.address?.state || 'Неизвестное место';
+        document.getElementById('location').value = placeName;
+        status.innerText = `✅ ${placeName} (${coords})`;
+      } catch (e) {
+        // Если геокодировка не сработала — показываем координаты
+        document.getElementById('location').value = coords;
+        status.innerText = `✅ Координаты: ${coords}`;
+      }
+      
+    } catch (error) {
+      status.innerText = "❌ Не удалось определить местоположение";
+      console.error('Geo error:', error);
     }
   }
 
-  // === 3. МАТЕМАТИЧЕСКИЙ ДВИЖОК (МЕТОД 22 АРКАНОВ) ===
+  // === ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ НУМЕРОЛОГИИ ===
+  function reduceToSingle(num) {
+    // Мастер-числа 11, 22, 33 не сокращаем
+    if ([11, 22, 33].includes(num)) return num;
+    while (num > 9) {
+      num = String(num).split('').reduce((sum, d) => sum + parseInt(d), 0);
+    }
+    return num;
+  }
+  
+  function getNumerologyDesc(number, type) {
+    const descriptions = {
+      lifePath: {
+        1: "Лидер, новатор, независимый",
+        2: "Дипломат, чувствительный, партнёр",
+        3: "Творец, оптимист, коммуникатор",
+        4: "Практик, стабильный, строитель",
+        5: "Свободолюбивый, адаптивный, исследователь",
+        6: "Заботливый, ответственный, гармонизатор",
+        7: "Аналитик, духовный, искатель истины",
+        8: "Достиженец, авторитетный, материалист",
+        9: "Гуманист, мудрый, завершитель",
+        11: "Просветитель, интуитивный, вдохновитель",
+        22: "Мастер-строитель, визионер, преобразователь",
+        33: "Мастер-учитель, целитель, служение человечеству"
+      }
+    };
+    return descriptions[type]?.[number] || "Уникальная вибрация";
+  }
+
+  // === АСТРОЛОГИЯ: Знак зодиака по дате ===
+  function getZodiacSign(day, month) {
+    const signs = [
+      { name: "Козерог", start: [12, 22], end: [1, 19] },
+      { name: "Водолей", start: [1, 20], end: [2, 18] },
+      { name: "Рыбы", start: [2, 19], end: [3, 20] },
+      { name: "Овен", start: [3, 21], end: [4, 19] },
+      { name: "Телец", start: [4, 20], end: [5, 20] },
+      { name: "Близнецы", start: [5, 21], end: [6, 20] },
+      { name: "Рак", start: [6, 21], end: [7, 22] },
+      { name: "Лев", start: [7, 23], end: [8, 22] },
+      { name: "Дева", start: [8, 23], end: [9, 22] },
+      { name: "Весы", start: [9, 23], end: [10, 22] },
+      { name: "Скорпион", start: [10, 23], end: [11, 21] },
+      { name: "Стрелец", start: [11, 22], end: [12, 21] }
+    ];
+    
+    for (let sign of signs) {
+      const [sM, sD] = sign.start;
+      const [eM, eD] = sign.end;
+      if ((month > sM || (month === sM && day >= sD)) && (month < eM || (month === eM && day <= eD))) {
+        return sign.name;
+      }
+    }
+    return "Неизвестно";
+  }
+  
+  function getAstroData(sign) {
+    const astro = {
+      "Овен": { element: "Огонь", quality: "Кардинальный" },
+      "Телец": { element: "Земля", quality: "Фиксированный" },
+      "Близнецы": { element: "Воздух", quality: "Мутабельный" },
+      "Рак": { element: "Вода", quality: "Кардинальный" },
+      "Лев": { element: "Огонь", quality: "Фиксированный" },
+      "Дева": { element: "Земля", quality: "Мутабельный" },
+      "Весы": { element: "Воздух", quality: "Кардинальный" },
+      "Скорпион": { element: "Вода", quality: "Фиксированный" },
+      "Стрелец": { element: "Огонь", quality: "Мутабельный" },
+      "Козерог": { element: "Земля", quality: "Кардинальный" },
+      "Водолей": { element: "Воздух", quality: "Фиксированный" },
+      "Рыбы": { element: "Вода", quality: "Мутабельный" }
+    };
+    return astro[sign] || { element: "?", quality: "?" };
+  }
+
+  // === МАТРИЦА СУДЬБЫ: 22 Аркана ===
   function getArcana(num) {
     let result = num;
-    while (result > 22) {
+    while (result > 22 && result !== 11 && result !== 22) {
       result = String(result).split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
     }
     return result === 0 ? 22 : result;
   }
+  
+  function getArcanaDesc(num) {
+    const arcana = {
+      1: "Маг — воля, инициатива", 2: "Жрица — интуиция, тайна",
+      3: "Императрица — изобилие, творчество", 4: "Император — структура, власть",
+      5: "Иерофант — учение, традиция", 6: "Влюблённые — выбор, отношения",
+      7: "Колесница — движение, победа", 8: "Сила — энергия, контроль",
+      9: "Отшельник — мудрость, уединение", 10: "Колесо Фортуны — циклы, судьба",
+      11: "Справедливость — баланс, карма", 12: "Повешенный — трансформация, взгляд",
+      13: "Смерть — обновление, переход", 14: "Умеренность — гармония, поток",
+      15: "Дьявол — искушение, материальное", 16: "Башня — освобождение, прорыв",
+      17: "Звезда — надежда, вдохновение", 18: "Луна — подсознание, иллюзии",
+      19: "Солнце — радость, успех", 20: "Суд — возрождение, призыв",
+      21: "Мир — целостность, завершение", 22: "Шут — начало, потенциал"
+    };
+    return arcana[num] || "Аркан";
+  }
 
-  function initResonance() {
-    const dateInput = document.getElementById('birthDate').value;
-    const timeInput = document.getElementById('birthTime').value;
+  // === КИТАЙСКИЙ ГОРОСКОП ===
+  function getChineseZodiac(year) {
+    const animals = ["Обезьяна", "Петух", "Собака", "Свинья", "Крыса", "Бык", "Тигр", "Кролик", "Дракон", "Змея", "Лошадь", "Коза"];
+    const elements = ["Металл", "Вода", "Дерево", "Огонь", "Земля"];
+    const animalIdx = (year - 1900) % 12;
+    const elementIdx = Math.floor((year - 1900) / 2) % 5;
+    return {
+      animal: animals[animalIdx],
+      element: elements[elementIdx],
+      trine: getChineseTrine(animals[animalIdx])
+    };
+  }
+  
+  function getChineseTrine(animal) {
+    const trines = {
+      "Крыса": "1-й тригон (Крыса, Дракон, Обезьяна)",
+      "Дракон": "1-й тригон (Крыса, Дракон, Обезьяна)",
+      "Обезьяна": "1-й тригон (Крыса, Дракон, Обезьяна)",
+      "Бык": "2-й тригон (Бык, Змея, Петух)",
+      "Змея": "2-й тригон (Бык, Змея, Петух)",
+      "Петух": "2-й тригон (Бык, Змея, Петух)",
+      "Тигр": "3-й тригон (Тигр, Лошадь, Собака)",
+      "Лошадь": "3-й тригон (Тигр, Лошадь, Собака)",
+      "Собака": "3-й тригон (Тигр, Лошадь, Собака)",
+      "Кролик": "4-й тригон (Кролик, Коза, Свинья)",
+      "Коза": "4-й тригон (Кролик, Коза, Свинья)",
+      "Свинья": "4-й тригон (Кролик, Коза, Свинья)"
+    };
+    return trines[animal] || "Тригон";
+  }
 
-    if (!dateInput) {
-      alert("Введите дату для инициации!");
-      return;
+  // === ШАГ 6: Улучшенная валидация ===
+  function validateInputs() {
+    const dateInput = document.getElementById('birthDate');
+    const errors = [];
+    
+    if (!dateInput.value) {
+      errors.push("Укажите дату рождения");
+    } else {
+      const date = new Date(dateInput.value);
+      const today = new Date();
+      if (date > today) errors.push("Дата не может быть в будущем");
+      if (date.getFullYear() < 1900) errors.push("Проверьте год рождения");
     }
-
-    const [year, month, day] = dateInput.split('-').map(Number);
-
-    // Точные расчеты
-    const arcDay = getArcana(day);
-    const arcMonth = getArcana(month);
-    const arcYear = getArcana(year);
-    const arcDestiny = getArcana(arcDay + arcMonth + arcYear);
-
-    // Расчет влияния времени на Индекс
-    let timeFactor = 1;
-    if (timeInput) {
-      const [h, m] = timeInput.split(':').map(Number);
-      timeFactor = (h + m/60) / 24 + 0.5;
+    
+    if (errors.length > 0) {
+      alert("⚠️ " + errors.join("\n"));
+      return false;
     }
-    const finalResonance = Math.min(100, Math.floor(((arcDay + arcMonth + arcYear + arcDestiny) / 88) * 100 * timeFactor));
+    return true;
+  }
 
-    // Вывод в UI
-    document.getElementById('res-day').innerText = arcDay;
-    document.getElementById('res-month').innerText = arcMonth;
-    document.getElementById('res-year').innerText = arcYear;
-    document.getElementById('res-destiny').innerText = arcDestiny;
-    document.getElementById('totalResonance').innerText = finalResonance + "%";
+  // === ОСНОВНАЯ ФУНКЦИЯ РАСЧЁТА ===
+  async function initResonance() {
+    // Валидация
+    if (!validateInputs()) return;
+    
+    const btn = document.getElementById('calcBtn');
+    const btnText = document.getElementById('btnText');
+    const btnSpinner = document.getElementById('btnSpinner');
+    
+    // ШАГ 4: Показываем состояние загрузки
+    btn.disabled = true;
+    btnText.style.display = 'none';
+    btnSpinner.style.display = 'block';
+    
+    try {
+      // Получаем данные
+      const [year, month, day] = document.getElementById('birthDate').value.split('-').map(Number);
+      const timeInput = document.getElementById('birthTime').value;
+      const location = document.getElementById('location').value;
+      
+      // === НУМЕРОЛОГИЯ ===
+      const lifePath = reduceToSingle(day + month + year);
+      const destinyNum = reduceToSingle(day + month + year + (timeInput ? timeInput.split(':').reduce((a,b)=>a+parseInt(b),0) : 0));
+      const soulNum = reduceToSingle(String(day).split('').reduce((a,b)=>a+parseInt(b),0) + String(month).split('').reduce((a,b)=>a+parseInt(b),0));
+      const personalityNum = reduceToSingle(String(year).split('').reduce((a,b)=>a+parseInt(b),0));
+      
+      document.getElementById('num-lifePath').innerText = lifePath;
+      document.getElementById('num-lifePath-desc').innerText = getNumerologyDesc(lifePath, 'lifePath');
+      document.getElementById('num-destiny').innerText = destinyNum;
+      document.getElementById('num-destiny-desc').innerText = "Путь реализации";
+      document.getElementById('num-soul').innerText = soulNum;
+      document.getElementById('num-soul-desc').innerText = "Внутренние желания";
+      document.getElementById('num-personality').innerText = personalityNum;
+      document.getElementById('num-personality-desc').innerText = "Внешнее проявление";
+      
+      // === АСТРОЛОГИЯ ===
+      const sunSign = getZodiacSign(day, month);
+      const astroData = getAstroData(sunSign);
+      // Упрощённый расчёт Луны (по дате + времени, если есть)
+      const moonOffset = timeInput ? (timeInput.split(':')[0] * 2) % 12 : 0;
+      const moonSignIdx = (Object.keys(getAstroData()).indexOf(sunSign) + moonOffset) % 12;
+      const moonSign = Object.keys(getAstroData())[moonSignIdx] || sunSign;
+      
+      document.getElementById('astro-sun').innerText = sunSign;
+      document.getElementById('astro-moon').innerText = moonSign;
+      document.getElementById('astro-element').innerText = astroData.element;
+      document.getElementById('astro-quality').innerText = astroData.quality;
+      
+      // === МАТРИЦА СУДЬБЫ ===
+      const arcDay = getArcana(day);
+      const arcMonth = getArcana(month);
+      const arcYear = getArcana(year);
+      const arcDestiny = getArcana(arcDay + arcMonth + arcYear);
+      
+      document.getElementById('matrix-day').innerText = arcDay;
+      document.getElementById('matrix-day').title = getArcanaDesc(arcDay);
+      document.getElementById('matrix-month').innerText = arcMonth;
+      document.getElementById('matrix-month').title = getArcanaDesc(arcMonth);
+      document.getElementById('matrix-year').innerText = arcYear;
+      document.getElementById('matrix-year').title = getArcanaDesc(arcYear);
+      document.getElementById('matrix-destiny').innerText = arcDestiny;
+      document.getElementById('matrix-destiny').title = getArcanaDesc(arcDestiny);
+      
+      // === КИТАЙСКИЙ ГОРОСКОП ===
+      const chinese = getChineseZodiac(year);
+      document.getElementById('chinese-animal').innerText = chinese.animal;
+      document.getElementById('chinese-animal-desc').innerText = `Стихия: ${chinese.element}`;
+      document.getElementById('chinese-element').innerText = chinese.element;
+      document.getElementById('chinese-element-desc').innerText = "Энергия года";
+      document.getElementById('chinese-trine').innerText = chinese.trine.split(' ')[0];
+      
+      // === ИНДЕКС РЕЗОНАНСА ===
+      const resonanceScore = Math.min(100, Math.floor((lifePath + arcDestiny + Object.keys(getAstroData()).indexOf(sunSign)) * 3.5));
+      document.getElementById('totalResonance').innerText = resonanceScore + "%";
+      
+      const descEl = document.getElementById('resonanceDesc');
+      if (resonanceScore > 75) descEl.innerText = "✨ Высокий резонанс: ваши энергии синхронизированы. Время действовать!";
+      else if (resonanceScore > 45) descEl.innerText = "⚖️ Баланс: стабильный поток. Развивайте сильные стороны.";
+      else descEl.innerText = "🌱 Потенциал: низкая вибрация. Работайте с намерением и осознанностью.";
+      
+      // ШАГ 8: Сохраняем результат
+      saveResult({ date: document.getElementById('birthDate').value, resonance: resonanceScore });
+      
+      // Показываем результаты
+      const resultsBlock = document.getElementById('results');
+      resultsBlock.classList.add('show');
+      resultsBlock.scrollIntoView({ behavior: 'smooth' });
+      
+      // Отправка события в Метрику (если подключена)
+      if (typeof ym !== 'undefined') {
+        ym(XXXXXXX, 'reachGoal', 'calculation_completed');
+      }
+      
+    } catch (error) {
+      console.error('Ошибка расчёта:', error);
+      alert("Произошла ошибка при расчёте. Попробуйте ещё раз.");
+    } finally {
+      // Возвращаем кнопку в исходное состояние
+      btn.disabled = false;
+      btnText.style.display = 'block';
+      btnSpinner.style.display = 'none';
+    }
+  }
 
-    const desc = document.getElementById('resonanceDesc');
-    if (finalResonance > 75) desc.innerText = "Матрица в состоянии гипер-резонанса. Путь открыт.";
-    else if (finalResonance > 45) desc.innerText = "Стабильный поток. Энергии сбалансированы.";
-    else desc.innerText = "Низкая вибрация. Требуется корректировка намерений.";
-
-    // Показ результатов
-    const resultsBlock = document.getElementById('results');
-    resultsBlock.classList.add('show');
-    resultsBlock.scrollIntoView({ behavior: 'smooth' });
+  // === ШАГ 5: Функция сброса ===
+  function resetCalculation() {
+    // Очистка полей
+    document.getElementById('birthDate').value = '';
+    document.getElementById('birthTime').value = '';
+    document.getElementById('location').value = '';
+    document.getElementById('geoStatus').innerText = '';
+    
+    // Сброс результатов
+    document.getElementById('results').classList.remove('show');
+    
+    // Сброс вкладок
+    document.querySelectorAll('.tab-btn').forEach((t, i) => {
+      t.classList.toggle('active', i === 0);
+    });
+    document.querySelectorAll('.module-card').forEach(c => c.style.display = 'block');
+    
+    // Прокрутка наверх
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // Событие в Метрику
+    if (typeof ym !== 'undefined') {
+      ym(XXXXXXX, 'reachGoal', 'reset_calculation');
+    }
   }
 </script>
+
+<!-- 🔮 ШАГ 2 (дополнение): Яндекс.Метрика (раскомментируйте и замените XXXXXXX на ваш номер) -->
+<!--
+<script type="text/javascript">
+  (function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  ym(XXXXXXX, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+-->
 
 </body>
 </html>
